@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('personal.layouts.main')
 @section('content')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -29,12 +29,12 @@
                         <!-- small box -->
                         <div class="small-box bg-info">
                             <div class="inner">
-                                <h3>{{$data['usersCount']}}</h3>
+                                <h3>12</h3>
 
-                                <p>Users</p>
+                                <p>Liked Posts</p>
                             </div>
                             <div class="icon">
-                                <i class="nav-icon fas fa-users"></i>
+                                <i class="nav-icon far fa-heart"></i>
                             </div>
                             <a href={{route('user.index')}} class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
@@ -44,47 +44,16 @@
                         <!-- small box -->
                         <div class="small-box bg-success">
                             <div class="inner">
-                                <h3>{{$data['postsCount']}}<sup style="font-size: 20px"></sup></h3>
+                                <h3>12<sup style="font-size: 20px"></sup></h3>
 
-                                <p>Posts</p>
+                                <p>Comments</p>
                             </div>
                             <div class="icon">
-                                <i class="nav-icon far fa-plus-square"></i>
+                                <i class="nav-icon far fa-comment"></i>
                             </div>
                             <a href={{route('post.index')}} class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
-                    <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-warning">
-                            <div class="inner">
-                                <h3>{{$data['categoriesCount']}}</h3>
-
-                                <p>Categories</p>
-                            </div>
-                            <div class="icon">
-                                <i class="nav-icon fas fa-grip-vertical"></i>
-                            </div>
-                            <a href={{route('category.index')}} class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <!-- ./col -->
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-danger">
-                            <div class="inner">
-                                <h3>{{$data['tagsCount']}}</h3>
-
-                                <p>Tags</p>
-                            </div>
-                            <div class="icon">
-                                <i class="nav-icon fas fa-user-tag"></i>
-                            </div>
-                            <a href={{route('tag.index')}} class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <!-- ./col -->
                 </div>
             </div><!-- /.container-fluid -->
         </section>

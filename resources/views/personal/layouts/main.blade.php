@@ -57,7 +57,7 @@
     <!-- /.navbar -->
 
 
-    @include('admin.includes.sidebar')
+    @include('personal.includes.sidebar')
     @yield('content')
     <footer class="main-footer">
         <strong>Copyright &copy; 2023-2024 <a href="https://adminlte.io">Vsechp</a>.</strong>

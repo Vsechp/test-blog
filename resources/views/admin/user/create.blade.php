@@ -40,13 +40,6 @@
                                 <div class="text-danger">{{$message}}</div>
                                 @enderror
                             </div>
-
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="password" placeholder="User password">
-                                @error('password')
-                                <div class="text-danger">{{$message}}</div>
-                                @enderror
-                            </div>
                             <div class="form-group w-50">
                                 <label>Choose a role</label>
                                 <select name="role" class="form-control">
@@ -56,7 +49,6 @@
                                         >{{$role}}</option>
                                     @endforeach
                                 </select>
-
                                 @error('role')
                                 <div class="text-danger">{{$message}}</div>
                                 @enderror

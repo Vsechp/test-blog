@@ -12,7 +12,7 @@ class UpdateController extends Controller
     public function __invoke(UpdateRequest $request, User $user)
     {
         $data = $request->validated();
-        $user->update([$data=>12]);
+        $user->update($data);
         return view('user.show', compact('user'));
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 use App\Http\Controllers\Main\IndexController;
@@ -16,7 +17,29 @@ use App\Http\Controllers\Main\IndexController;
 |
 */
 
-Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
+Route::group(['namespace' => 'App\Http\Controllers\Main'], function () {
+    Route::get('/', 'IndexController')->name('main.index');
+});
+
+Route::group(['namespace' => 'App\Http\Controllers\Personal', 'prefix' => 'personal', 'middleware' => ['auth', 'verified']], function () {
+    Route::group(['namespace' => 'Main', 'prefix' => 'main'], function () {
+        Route::get('/', 'IndexController')->name('personal.main.index');
+    });
+    Route::group(['namespace' => 'Liked', 'prefix' => 'liked'], function () {
+        Route::get('/', 'IndexController')->name('personal.liked.index');
+        Route::delete('/{post}', 'DeleteController')->name('personal.liked.delete');
+    });
+    Route::group(['namespace' => 'Commented', 'prefix' => 'commented'], function () {
+        Route::get('/', 'IndexController')->name('personal.commented.index');
+        Route::get('/{comment}/edit', 'EditController')->name('personal.commented.edit');
+        Route::patch('/{comment}', 'UpdateController')->name('personal.commented.update');
+        Route::delete('/{comment}', 'DeleteController')->name('personal.commented.delete');
+    });
+});
+
+
+
+Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 'middleware' => ['auth', 'admin', 'verified']], function () {
     Route::group(['namespace' => 'Main'], function () {
         Route::get('/', 'IndexController')->name('admin.index');
     });
@@ -31,7 +54,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 
         Route::delete('/post/{post}', 'DeleteController')->name('post.delete');
     });
 
-    Route::group(['namespace' => 'Category', 'prefix' => 'categories'], function () {
+    Route::group(['namespace' => 'Comment', 'prefix' => 'categories'], function () {
         Route::get('/', 'IndexController')->name('category.index');
         Route::get('/create', 'CreateController')->name('category.create');
         Route::post('/', 'StoreController')->name('category.store');
@@ -63,4 +86,5 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 
 
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
+

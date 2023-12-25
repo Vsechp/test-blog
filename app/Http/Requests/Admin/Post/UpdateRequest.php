@@ -46,8 +46,8 @@ class UpdateRequest extends FormRequest
             'main_image.required' => 'This field must be filled',
             'main_image.file' => 'Choose a file',
             'category_id.required' => 'This field must be filled',
-            'category_id.integer' => 'Category id must be a number',
-            'category_id.exists' => 'Category id must be in a database',
+            'category_id.integer' => 'Comment id must be a number',
+            'category_id.exists' => 'Comment id must be in a database',
             'tag_ids.array' => 'Needs to send a data massive',
 
         ];
